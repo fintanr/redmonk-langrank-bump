@@ -15,7 +15,7 @@ df <- read.csv("rmonk-lang-rankings-2018.csv")
 df$Date <- as.Date(df$Date, format='%m-%d-%Y', origin="1970-01-01")
 df$Rank <- as.numeric(as.character(df$Rank))
 
-df_latest <- df[which(df$Date == "2018-01-30"),]
+df_latest <- df[which(df$Date == "2018-06-30"),]
 df_first <- df[which(df$Date == "2012-09-30"),]
 
 pal1 = c("#c57c3c", "#e392c2", "#a5e7a8", "#bea3ea", "#d7e298", "#81a4e3", "#a6b16a", "#a7baf2", "#e4c587", "#5ab6e6",
@@ -27,7 +27,7 @@ g1 <- g1 + geom_point(shape = 21, stroke = 2, size=3, fill = "white", aes(colour
 g1 <- g1 + geom_label_repel(data = df_first, aes(label=Language), size=2.1, fontface = "bold", color='#2f2f2f')
 g1 <- g1 + geom_label(data = df_latest, aes(x=Date, y = Rank, label=Language), size=2.1, fontface = "bold", color='#2f2f2f', hjust=.1) 
 g1 <- g1 + scale_y_reverse(lim=c(20,1), breaks = scales::pretty_breaks(n = 20)) 
-g1 <- g1 + ggtitle('RedMonk Language Rankings\nSep 2012 - Jan 2018') 
+g1 <- g1 + ggtitle('RedMonk Language Rankings\nSep 2012 - June 2018') 
 g1 <- g1 +  xlab(NULL) + ylab("Language Rank") 
 g1 <- g1 + theme_minimal() + theme_bw() + scale_colour_manual(values=pal1) 
 g1 <- g1 +  theme(panel.background = element_rect(fill = '#ffffff'),
